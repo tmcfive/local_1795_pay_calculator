@@ -47,18 +47,41 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
   .comp + .comp{margin-top:34px}
   .comp-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
   .comp-column{min-width:0}
-  .comp-title{display:block;min-height:58px}
-  .comp-title h2{font-size:9px;line-height:1.2;margin:0 0 5px;overflow-wrap:normal;word-break:normal}
-  .comp-title h2 small{font-size:7px}
-  .comp-title .badge{display:inline-block;font-size:7px;padding:3px 4px;white-space:nowrap}
+  .comp-title{
+    display:grid;
+    grid-template-rows:40px 18px;
+    align-items:start;
+    min-height:62px;
+  }
+  .comp-title h2{
+    font-size:9px;
+    line-height:1.15;
+    margin:0;
+    padding-right:2px;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .comp-title h2 small{font-size:7px;line-height:1.1}
+  .comp-title .badge{
+    justify-self:start;
+    align-self:end;
+    display:inline-block;
+    font-size:7px;
+    line-height:1;
+    padding:3px 4px;
+    white-space:nowrap;
+    max-width:100%;
+  }
   .comp .line{
     display:grid;
-    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-columns:minmax(0,1fr) minmax(38px,auto);
     align-items:center;
     column-gap:3px;
+    min-height:31px;
+    box-sizing:border-box;
     font-size:7.5px;
     line-height:1.15;
-    padding:5px 0;
+    padding:4px 0;
   }
   .comp .line span:first-child{
     min-width:0;
@@ -66,8 +89,18 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
     word-break:normal;
     hyphens:none;
   }
-  .comp .line span:last-child{white-space:nowrap;font-size:7.5px}
-  .comp .total{font-size:8px}
+  .comp .line span:last-child{
+    min-width:0;
+    text-align:right;
+    font-size:7.5px;
+    line-height:1.05;
+    white-space:normal;
+  }
+  .comp .line span:last-child:not([id]){
+    max-width:44px;
+    justify-self:end;
+  }
+  .comp .total{font-size:8px;min-height:34px}
 }
 
 /* Keep annual compensation line items aligned with the weekly-rate line items. */
@@ -81,6 +114,19 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
   align-items:flex-start;
 }
 
+
+@media(max-width:600px){
+  .comp .line span:last-child:not([id]){
+    font-size:0;
+  }
+  .comp .line span:last-child:not([id])::after{
+    content:"Not paid\A weekly";
+    white-space:pre-line;
+    font-size:7.5px;
+    line-height:1.05;
+    text-align:right;
+  }
+}
 </style>
 </head>
 <body>
