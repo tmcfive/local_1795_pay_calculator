@@ -115,18 +115,7 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 }
 
 
-@media(max-width:600px){
-  .comp .line span:last-child:not([id]){
-    font-size:0;
-  }
-  .comp .line span:last-child:not([id])::after{
-    content:"Not paid\A weekly";
-    white-space:pre-line;
-    font-size:7.5px;
-    line-height:1.05;
-    text-align:right;
-  }
-}
+
 
 @media(max-width:600px){
   /* Annual Clothing is an actual annual dollar amount, not "Not paid weekly". */
@@ -208,6 +197,20 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
     line-height:1.15 !important;
   }
 }
+
+@media(max-width:600px){
+  .comp .npw-line1,
+  .comp .npw-line2{
+    display:block;
+    width:100%;
+    font-family:inherit !important;
+    font-size:7.5px !important;
+    font-style:normal !important;
+    font-weight:600 !important;
+    line-height:1.05 !important;
+    text-align:right;
+  }
+}
 </style>
 </head>
 <body>
@@ -255,8 +258,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="degreePay">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="weeklyTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="previousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="weeklyIncrease">—%</span></div>
@@ -269,8 +272,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy27PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy27PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy27PostDegree">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy27PostTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy27PostPreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy27PostWeeklyIncrease">—%</span></div>
@@ -301,8 +304,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28Night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28DegreePay">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy28WeeklyTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy28PreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy28WeeklyIncrease">—%</span></div>
@@ -315,8 +318,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28PostDegree">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy28PostTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy28PostPreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy28PostWeeklyIncrease">—%</span></div>
@@ -347,8 +350,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29Night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29DegreePay">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy29WeeklyTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy29PreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy29WeeklyIncrease">—%</span></div>
@@ -361,8 +364,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29PostDegree">$0.00</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy29PostTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy29PostPreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy29PostWeeklyIncrease">—%</span></div>
@@ -392,9 +395,9 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span>EMT Pay</span><span id="fy26Emt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26Night">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26DegreePay">$0.00</span></div>
-<div class="line"><span>Longevity Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Longevity Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy26WeeklyTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy26PreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy26WeeklyIncrease">—%</span></div>
@@ -406,9 +409,9 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span>EMT Pay</span><span id="fy26PostEmt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26PostNight">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26PostDegree">$0.00</span></div>
-<div class="line"><span>Longevity Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
-<div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
+<div class="line"><span>Longevity Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
+<div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy26PostTotal">$ —</span></div>
 <div class="line previous-line"><span>Previous FY Pay</span><span id="fy26PostPreviousWeeklyPay">$ —</span></div>
 <div class="line increase-line"><span>Increase from Previous FY</span><span id="fy26PostWeeklyIncrease">—%</span></div>
