@@ -129,17 +129,6 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 }
 
 @media(max-width:600px){
-  /* Shorter compensation labels only on mobile. */
-  .comp .line span:first-child[data-mobile-label]{
-    font-size:0;
-  }
-  .comp .line span:first-child[data-mobile-label]::after{
-    content:attr(data-mobile-label);
-    font-size:7.5px;
-    line-height:1.15;
-    white-space:pre-line;
-  }
-
   /* Annual Clothing is an actual annual dollar amount, not "Not paid weekly". */
   .comp-column:nth-child(3) .clothing-value{
     font-size:7.5px !important;
@@ -206,6 +195,19 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
     font-style:normal !important;
   }
 }
+
+.mobile-comp-label{display:none}
+@media(max-width:600px){
+  .comp .desktop-comp-label{display:none !important}
+  .comp .mobile-comp-label{
+    display:inline !important;
+    font-family:inherit !important;
+    font-size:7.5px !important;
+    font-style:normal !important;
+    font-weight:400 !important;
+    line-height:1.15 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -248,10 +250,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY27 Weekly Compensation as of <span class="fy27-start-date">July 1, 2026</span></h2><span class="step-badge">Step <span class="fy27-start-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="base">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="certPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="certPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="emt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="night">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="tech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="night">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="degreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -262,10 +264,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY27 Weekly Compensation as of <span class="fy27-post-date">—</span></h2><span class="step-badge">Step <span class="fy27-post-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy27PostBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy27PostCert">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy27PostCert">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy27PostEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy27PostNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy27PostTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy27PostNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy27PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy27PostDegree">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -276,10 +278,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY27 Annual Compensation</h2><span class="step-badge">FY27</span></div>
 <div class="line"><span>Base Pay</span><span id="annualBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="annualCertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="annualCertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="annualEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="annualNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="annualTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="annualNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="annualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="annualDegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="annualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$800.00</span></div>
@@ -294,10 +296,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY28 Weekly Compensation as of <span class="fy28-start-date">July 1, 2027</span></h2><span class="step-badge">Step <span class="fy28-start-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy28Base">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy28CertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy28CertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy28Emt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy28Night">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy28Tech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28Night">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28DegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -308,10 +310,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY28 Weekly Compensation as of <span class="fy28-post-date">—</span></h2><span class="step-badge">Step <span class="fy28-post-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy28PostBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy28PostCert">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy28PostCert">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy28PostEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy28PostNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy28PostTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28PostNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28PostDegree">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -322,10 +324,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY28 Annual Compensation</h2><span class="step-badge">FY28</span></div>
 <div class="line"><span>Base Pay</span><span id="fy28AnnualBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy28AnnualCertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy28AnnualCertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy28AnnualEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy28AnnualNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy28AnnualTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28AnnualNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28AnnualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28AnnualDegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy28AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$800.00</span></div>
@@ -340,10 +342,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY29 Weekly Compensation as of <span class="fy29-start-date">July 1, 2028</span></h2><span class="step-badge">Step <span class="fy29-start-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy29Base">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy29CertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy29CertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy29Emt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy29Night">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy29Tech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29Night">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29DegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -354,10 +356,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY29 Weekly Compensation as of <span class="fy29-post-date">—</span></h2><span class="step-badge">Step <span class="fy29-post-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy29PostBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy29PostCert">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy29PostCert">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy29PostEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy29PostNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy29PostTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29PostNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29PostDegree">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly">Not paid weekly</span></div>
@@ -368,10 +370,10 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY29 Annual Compensation</h2><span class="step-badge">FY29</span></div>
 <div class="line"><span>Base Pay</span><span id="fy29AnnualBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy29AnnualCertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy29AnnualCertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy29AnnualEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy29AnnualNight">$ —</span></div>
-<div class="line"><span data-mobile-label="Tech.&#10;Stipend">Technology Stipend</span><span id="fy29AnnualTech">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29AnnualNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29AnnualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29AnnualDegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy29AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$1,175.00</span></div>
@@ -386,9 +388,9 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY26 Weekly Compensation as of <span class="fy26-start-date">July 1, 2025</span></h2><span class="step-badge">Step <span class="fy26-start-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy26Base">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy26CertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy26CertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy26Emt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy26Night">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26Night">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26DegreePay">$0.00</span></div>
 <div class="line"><span>Longevity Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
@@ -400,9 +402,9 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY26 Weekly Compensation as of <span class="fy26-post-date">—</span></h2><span class="step-badge">Step <span class="fy26-post-step">—</span></span></div>
 <div class="line"><span>Base Pay</span><span id="fy26PostBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy26PostCert">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy26PostCert">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy26PostEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy26PostNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26PostNight">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26PostDegree">$0.00</span></div>
 <div class="line"><span>Longevity Pay</span><span class="not-weekly">Not paid weekly</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly">Not paid weekly</span></div>
@@ -414,9 +416,9 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="comp-column">
 <div class="comp-title"><h2>FY26 Annual Compensation</h2><span class="step-badge">FY26</span></div>
 <div class="line"><span>Base Pay</span><span id="fy26AnnualBase">$ —</span></div>
-<div class="line"><span data-mobile-label="ProBoard Certs">ProBoard Certifications</span><span id="fy26AnnualCertPay">$0.00</span></div>
+<div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy26AnnualCertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy26AnnualEmt">$0.00</span></div>
-<div class="line"><span data-mobile-label="Night Diff.">Night Differential</span><span id="fy26AnnualNight">$ —</span></div>
+<div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26AnnualNight">$ —</span></div>
 <div class="line"><span>Longevity Pay</span><span id="fy26AnnualLongevity">$0.00</span></div>
 <div class="line"><span>College Degree</span><span id="fy26AnnualDegreePay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy26AnnualHolidayPay">$ —</span></div>
