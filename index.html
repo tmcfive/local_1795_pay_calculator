@@ -570,8 +570,8 @@ function calcFY(fy,hire){
  if(fy===26){
    // FY26 education is a fixed annual amount regardless of rank:
    // Associate's $2,500; Bachelor's $4,500.
-   if(degree==="Associate's")edu=2500/52.2;
-   if(degree==="Bachelor's")edu=4500/52.2;
+   if(degree==="Associate's")edu=2500/52;
+   if(degree==="Bachelor's")edu=4500/52;
  }else if(Number.isFinite(lt6)){
    if(degree==="Associate's")edu=lt6*.025;
    if(degree==="Bachelor's")edu=lt6*.04;
@@ -614,7 +614,7 @@ function calcFY(fy,hire){
  const d1=change?daysBetween(start,change):daysBetween(start,afterEnd);
  const d2=change?daysBetween(change,afterEnd):0;
  const prorate=(x,y)=>(x/7*d1)+(y/7*d2);
- const annualizationFactor=((fy===26||fy===27)?52.2:52);
+ const annualizationFactor=(fy===27?52.2:52);
  // Weight the two rates by the exact number of calendar days before/after the step
  // change, then annualize the resulting weekly rate by the FY's required week factor.
  const totalDays=d1+d2;
