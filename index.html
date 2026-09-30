@@ -43,18 +43,31 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
   .row{grid-template-columns:1fr}
   .wrap{margin:10px auto;padding:10px}
   .card{padding:18px}
-  .comp{margin-top:30px;padding:16px 8px 12px;border-top-width:6px;border-radius:10px}
+  .comp{margin-top:30px;padding:16px 7px 12px;border-top-width:6px;border-radius:10px}
   .comp + .comp{margin-top:34px}
-  .comp-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .comp-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
   .comp-column{min-width:0}
-  .comp-title{gap:3px;align-items:flex-start}
-  .comp-title h2{font-size:10px;line-height:1.15;overflow-wrap:anywhere}
+  .comp-title{display:block;min-height:58px}
+  .comp-title h2{font-size:9px;line-height:1.2;margin:0 0 5px;overflow-wrap:normal;word-break:normal}
   .comp-title h2 small{font-size:7px}
-  .badge{font-size:7px;padding:3px 4px;white-space:nowrap}
-  .comp .line{font-size:8px;gap:3px;padding:5px 0}
-  .comp .line span:first-child{min-width:0;overflow-wrap:anywhere}
-  .comp .line span:last-child{white-space:nowrap}
-  .comp .total{font-size:9px}
+  .comp-title .badge{display:inline-block;font-size:7px;padding:3px 4px;white-space:nowrap}
+  .comp .line{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    column-gap:3px;
+    font-size:7.5px;
+    line-height:1.15;
+    padding:5px 0;
+  }
+  .comp .line span:first-child{
+    min-width:0;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+  .comp .line span:last-child{white-space:nowrap;font-size:7.5px}
+  .comp .total{font-size:8px}
 }
 
 /* Keep annual compensation line items aligned with the weekly-rate line items. */
