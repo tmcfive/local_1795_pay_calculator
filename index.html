@@ -15,28 +15,37 @@ button.selected{border:2px solid var(--accent);background:var(--accentbg);color:
 input,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:9px;font:inherit;background:white;color:var(--text)}
 .date-selects{display:grid;grid-template-columns:1.35fr .85fr 1fr;gap:8px}.stepbox{height:44px;border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;padding:0 12px;font-weight:700;background:#fafafa}
 .helper{font-size:12px;color:var(--muted);margin-top:6px;min-height:16px}.four{grid-template-columns:repeat(4,1fr)}
-.comp{margin-top:26px;border-top:1px solid var(--border);padding-top:4px}.comp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.comp-column{min-width:0}.comp-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.comp-title h2{margin-right:auto;line-height:1.25}.comp-title h2 small{font-size:11px;color:var(--muted);font-weight:600}
-.comp.fy28-comp,.comp.fy29-comp,.comp.fy26-comp{
-  margin-top:34px;
-  padding-top:34px;
-  border-top:3px solid var(--border);
+.comp{
+  margin-top:38px;
+  padding:28px 22px 22px;
+  border:2px solid #c7d2e3;
+  border-top:8px solid var(--accent);
+  border-radius:14px;
+  background:#fbfcfe;
+  box-shadow:0 5px 16px rgba(16,24,40,.05);
   position:relative;
 }
-.comp.fy28-comp::before,.comp.fy29-comp::before,.comp.fy26-comp::before{
-  content:"";
-  position:absolute;
-  top:-3px;
-  left:0;
-  width:84px;
-  height:3px;
-  background:var(--accent);
-}
+.comp:first-of-type{margin-top:30px}
+.comp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.comp-column{min-width:0}
+.comp-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.comp-title h2{margin-right:auto;line-height:1.25}
+.comp-title h2 small{font-size:11px;color:var(--muted);font-weight:600}
+.comp + .comp{margin-top:54px}
 .comp-title h2 .fy27-start-date,.comp-title h2 .fy27-post-date,
 .comp-title h2 .fy28-start-date,.comp-title h2 .fy28-post-date,
 .comp-title h2 .fy29-start-date,.comp-title h2 .fy29-post-date{
   white-space:nowrap;
 }.step-badge{border:1px solid var(--accent);background:var(--accentbg);color:var(--accent);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:750;white-space:nowrap}.line{display:flex;justify-content:space-between;gap:12px;padding:13px 2px;border-bottom:1px solid #eaecf0}.line span:first-child{font-size:14px}.line span:last-child{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}.not-weekly{font-weight:500!important;color:var(--muted);font-size:13px}.total-line{margin-top:8px;border-top:2px solid var(--text);font-weight:800;font-size:16px;padding-top:15px}.previous-line{font-weight:700}.increase-line{font-weight:700;border-bottom:0}
-@media(max-width:600px){.buttons{grid-template-columns:1fr}.four{grid-template-columns:repeat(4,1fr)}.row{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr;gap:18px}.wrap{margin:10px auto;padding:10px}.card{padding:18px}}
+@media(max-width:600px){
+  body{min-width:1180px}
+  .wrap{width:1180px;max-width:none;margin:18px auto;padding:14px}
+  .card{padding:26px}
+  .buttons{grid-template-columns:repeat(3,1fr)}
+  .four{grid-template-columns:repeat(4,1fr)}
+  .row{grid-template-columns:1fr 180px}
+  .comp-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+}
 
 /* Keep annual compensation line items aligned with the weekly-rate line items. */
 .fy-grid > .comp-column:nth-child(3) .comp-title{
@@ -447,7 +456,7 @@ function calcFY(fy,hire){
  const d1=change?daysBetween(start,change):daysBetween(start,afterEnd);
  const d2=change?daysBetween(change,afterEnd):0;
  const prorate=(x,y)=>(x/7*d1)+(y/7*d2);
- const annualizationFactor=(fy===27?52.2:52);
+ const annualizationFactor=((fy===26||fy===27)?52.2:52);
  // Weight the two rates by the exact number of calendar days before/after the step
  // change, then annualize the resulting weekly rate by the FY's required week factor.
  const totalDays=d1+d2;
