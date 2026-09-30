@@ -148,6 +148,64 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
   }
   .comp-column:nth-child(3) .clothing-value::after{content:none !important;}
 }
+
+@media(max-width:600px){
+  /* Uniform typography and protected label/value columns for every compensation line item. */
+  .comp .line{
+    grid-template-columns:minmax(0,1fr) 47px;
+    column-gap:4px;
+    min-height:32px;
+    font-family:inherit;
+    font-size:7.5px;
+    font-style:normal;
+    font-weight:400;
+    line-height:1.15;
+  }
+  .comp .line > span:first-child,
+  .comp .line > span:first-child::after{
+    min-width:0;
+    max-width:100%;
+    font-family:inherit !important;
+    font-size:7.5px !important;
+    font-style:normal !important;
+    font-weight:400 !important;
+    line-height:1.15 !important;
+    letter-spacing:normal !important;
+    word-break:normal;
+    overflow-wrap:normal;
+  }
+  .comp .line > span:last-child,
+  .comp .line > span:last-child::after{
+    width:47px;
+    max-width:47px;
+    box-sizing:border-box;
+    justify-self:end;
+    text-align:right;
+    font-family:inherit !important;
+    font-size:7.5px !important;
+    font-style:normal !important;
+    font-weight:600 !important;
+    line-height:1.15 !important;
+    letter-spacing:normal !important;
+    white-space:normal;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .comp .line > span[id]:last-child{
+    white-space:nowrap;
+  }
+  .comp .line .clothing-value{
+    width:47px !important;
+    max-width:47px !important;
+    white-space:nowrap !important;
+  }
+  .comp .total,
+  .comp .total > span,
+  .comp .total > span::after{
+    font-family:inherit !important;
+    font-style:normal !important;
+  }
+}
 </style>
 </head>
 <body>
