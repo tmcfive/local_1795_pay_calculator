@@ -422,8 +422,8 @@ input,select{width:100%;padding:11px;border:1px solid var(--border);border-radiu
 <div class="line"><span><span class="desktop-comp-label">ProBoard Certifications</span><span class="mobile-comp-label">ProBoard Certs</span></span><span id="fy26AnnualCertPay">$0.00</span></div>
 <div class="line"><span>EMT Pay</span><span id="fy26AnnualEmt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26AnnualNight">$ —</span></div>
-<div class="line"><span>Longevity Pay</span><span id="fy26AnnualLongevity">$0.00</span></div>
 <div class="line"><span>College Degree</span><span id="fy26AnnualDegreePay">$0.00</span></div>
+<div class="line"><span>Longevity Pay</span><span id="fy26AnnualLongevity">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy26AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span>$680.00</span></div>
 <div class="line total-line"><span>Total Annual Pay</span><span id="fy26AnnualTotal">$ —</span></div>
@@ -567,7 +567,12 @@ function calcFY(fy,hire){
  const emtBase=(fy===26)?chart.Lieutenant[4]:lt1;
  const emt=emtBase*.08, certW=(cert*275)/52;
  let edu=0;
- if(Number.isFinite(lt6)){
+ if(fy===26){
+   // FY26 education is a fixed annual amount regardless of rank:
+   // Associate's $2,500; Bachelor's $4,500.
+   if(degree==="Associate's")edu=2500/52.2;
+   if(degree==="Bachelor's")edu=4500/52.2;
+ }else if(Number.isFinite(lt6)){
    if(degree==="Associate's")edu=lt6*.025;
    if(degree==="Bachelor's")edu=lt6*.04;
  }
