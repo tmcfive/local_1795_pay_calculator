@@ -217,6 +217,39 @@ h1{
   text-decoration:underline;
   text-underline-offset:5px;
 }
+
+.special-role-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px}
+.special-role-field h2{margin-top:0}
+.special-role-buttons{grid-template-columns:1fr 1fr!important}
+@media(max-width:600px){
+ .special-role-row{grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+ .special-role-field h2{font-size:12px;line-height:1.2;min-height:29px;margin-bottom:6px}
+ .special-role-buttons{grid-template-columns:1fr 1fr!important;gap:5px}
+ .special-role-buttons button{font-size:12px;padding:9px 4px}
+}
+
+.fy26-comp .prev,
+.fy26-comp .increase{display:none !important;}
+
+.fy-divider{height:10px;border-top:5px solid #667085;border-bottom:2px solid #c7d2e3;margin:68px 0 18px;background:#eef1f5;border-radius:3px;}
+@media(max-width:600px){.fy-divider{height:8px;margin:44px 0 14px;border-top-width:4px;border-bottom-width:2px;}}
+
+
+
+/* Increase-from-Previous-FY VALUE only, first two (weekly) columns */
+.comp-column:nth-child(1) .increase-line > span:last-child,
+.comp-column:nth-child(2) .increase-line > span:last-child{
+  font-size:75% !important;
+  font-style:italic !important;
+}
+@media(max-width:600px){
+  .comp .comp-column:nth-child(1) .increase-line > span:last-child,
+  .comp .comp-column:nth-child(2) .increase-line > span:last-child{
+    font-size:5.625px !important;
+    font-style:italic !important;
+    line-height:1.15 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -253,6 +286,22 @@ h1{
 <button data-degree="Associate's">Associate’s</button>
 <button data-degree="Bachelor's">Bachelor’s</button>
 </div>
+<div class="special-role-row">
+  <div class="special-role-field">
+    <h2>Fire Prevention</h2>
+    <div class="buttons special-role-buttons" data-role-group="fire-prevention">
+      <button type="button" class="selected" data-role="fire-prevention" data-value="No">No</button>
+      <button type="button" data-role="fire-prevention" data-value="Yes">YES</button>
+    </div>
+  </div>
+  <div class="special-role-field">
+    <h2>EMS Coordinator</h2>
+    <div class="buttons special-role-buttons" data-role-group="ems-coordinator">
+      <button type="button" class="selected" data-role="ems-coordinator" data-value="No">No</button>
+      <button type="button" data-role="ems-coordinator" data-value="Yes">YES</button>
+    </div>
+  </div>
+</div>
 
 <div class="comp fy27-comp">
 <div class="comp-grid fy-grid">
@@ -264,6 +313,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="degreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="emsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="weeklyTotal">$ —</span></div>
@@ -278,6 +328,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy27PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy27PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy27PostDegree">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy27PostEmsCoor">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy27PostTotal">$ —</span></div>
@@ -292,6 +343,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="annualNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="annualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="annualDegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="annualEmsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="annualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$800.00</span></div>
 <div class="line total-line"><span>Total Annual Pay</span><span id="annualTotal">$ —</span></div>
@@ -310,6 +362,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28Night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28DegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy28EmsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy28WeeklyTotal">$ —</span></div>
@@ -324,6 +377,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28PostDegree">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy28PostEmsCoor">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy28PostTotal">$ —</span></div>
@@ -338,6 +392,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy28AnnualNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy28AnnualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy28AnnualDegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy28AnnualEmsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy28AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$800.00</span></div>
 <div class="line total-line"><span>Total Annual Pay</span><span id="fy28AnnualTotal">$ —</span></div>
@@ -356,6 +411,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29Night">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29Tech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29DegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy29EmsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy29WeeklyTotal">$ —</span></div>
@@ -370,6 +426,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29PostNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29PostTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29PostDegree">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy29PostEmsCoor">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy29PostTotal">$ —</span></div>
@@ -384,6 +441,7 @@ h1{
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy29AnnualNight">$ —</span></div>
 <div class="line"><span><span class="desktop-comp-label">Technology Stipend</span><span class="mobile-comp-label">Tech.<br>Stipend</span></span><span id="fy29AnnualTech">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy29AnnualDegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy29AnnualEmsCoorPay">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy29AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span class="clothing-value">$1,175.00</span></div>
 <div class="line total-line"><span>Total Annual Pay</span><span id="fy29AnnualTotal">$ —</span></div>
@@ -392,6 +450,7 @@ h1{
 </div>
 </div>
 </div>
+<div class="fy-divider" aria-hidden="true"></div>
 <div class="comp fy26-comp">
 <div class="comp-grid fy-grid">
 <div class="comp-column">
@@ -401,12 +460,11 @@ h1{
 <div class="line"><span>EMT Pay</span><span id="fy26Emt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26Night">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26DegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy26EmsCoorPay">$0.00</span></div>
 <div class="line"><span>Longevity Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy26WeeklyTotal">$ —</span></div>
-<div class="line previous-line"><span>Previous FY Pay</span><span id="fy26PreviousWeeklyPay">$ —</span></div>
-<div class="line increase-line"><span>Increase from Previous FY</span><span id="fy26WeeklyIncrease">—%</span></div>
 </div>
 <div class="comp-column">
 <div class="comp-title"><h2>FY26 Weekly Compensation as of <span class="fy26-post-date">—</span></h2><span class="step-badge">Step <span class="fy26-post-step">—</span></span></div>
@@ -415,12 +473,11 @@ h1{
 <div class="line"><span>EMT Pay</span><span id="fy26PostEmt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26PostNight">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26PostDegree">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy26PostEmsCoor">$0.00</span></div>
 <div class="line"><span>Longevity Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Holiday Pay</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line"><span>Clothing</span><span class="not-weekly"><span class="npw-line1">Not paid</span><span class="npw-line2">weekly</span></span></div>
 <div class="line total-line"><span>Total Weekly Pay</span><span id="fy26PostTotal">$ —</span></div>
-<div class="line previous-line"><span>Previous FY Pay</span><span id="fy26PostPreviousWeeklyPay">$ —</span></div>
-<div class="line increase-line"><span>Increase from Previous FY</span><span id="fy26PostWeeklyIncrease">—%</span></div>
 </div>
 <div class="comp-column">
 <div class="comp-title"><h2>FY26 Annual Compensation</h2><span class="step-badge">FY26</span></div>
@@ -429,12 +486,11 @@ h1{
 <div class="line"><span>EMT Pay</span><span id="fy26AnnualEmt">$0.00</span></div>
 <div class="line"><span><span class="desktop-comp-label">Night Differential</span><span class="mobile-comp-label">Night Diff.</span></span><span id="fy26AnnualNight">$ —</span></div>
 <div class="line"><span>College Degree</span><span id="fy26AnnualDegreePay">$0.00</span></div>
+<div class="line ems-coor-line" style="display:none"><span>EMS Coor. Pay</span><span id="fy26AnnualEmsCoorPay">$0.00</span></div>
 <div class="line"><span>Longevity Pay</span><span id="fy26AnnualLongevity">$0.00</span></div>
 <div class="line"><span>Holiday Pay</span><span id="fy26AnnualHolidayPay">$ —</span></div>
 <div class="line"><span>Clothing</span><span>$680.00</span></div>
 <div class="line total-line"><span>Total Annual Pay</span><span id="fy26AnnualTotal">$ —</span></div>
-<div class="line previous-line"><span>Previous FY Annual Pay</span><span id="fy26PreviousAnnualPay">$ —</span></div>
-<div class="line increase-line"><span>Increase from Previous FY</span><span id="fy26AnnualIncrease">—%</span></div>
 </div>
 </div>
 </div>
@@ -464,6 +520,8 @@ const payCharts={
   }
 };
 let rank="",cert=0,degree="";
+let firePrevention="No";
+let emsCoordinator="No";
 const money=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(v);
 const daysBetween=(a,b)=>Math.round((b-a)/86400000);
 function yearsAsOf(hire,asof){
@@ -516,9 +574,15 @@ function anniversaryInFY(hire,start,end){
  return candidates.find(d=>d>start && d<=end) || null;
 }
 function setText(id,v){const el=document.getElementById(id);if(el)el.textContent=v}
-function pctChange(current,previous){
- if(previous===null||previous===undefined||previous===0)return "—%";
- return (((current-previous)/previous)*100).toFixed(2)+"%";
+function dollarChange(cur,prev){
+ if(!Number.isFinite(cur)||!Number.isFinite(prev))return "—";
+ const diff=cur-prev;
+ const sign=diff>0?"+":diff<0?"-":"";
+ return `${sign}$${Math.abs(diff).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}/week`;
+}
+function pctChange(cur,prev){
+ if(!Number.isFinite(cur)||!Number.isFinite(prev)||prev===0)return "—";
+ return `${(((cur-prev)/prev)*100).toFixed(2)}%`;
 }
 function displayDate(d){return d.toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});}
 function selectedDate(){
@@ -531,19 +595,19 @@ function selectedDate(){
 function ids(fy){
  const p=`fy${fy}`;
  if(fy===26)return {
-  sb:"fy26Base",sc:"fy26CertPay",se:"fy26Emt",sn:"fy26Night",st:"fy26Tech",sd:"fy26DegreePay",sw:"fy26WeeklyTotal",
-  pb:"fy26PostBase",pc:"fy26PostCert",pe:"fy26PostEmt",pn:"fy26PostNight",pt:"fy26PostTech",pd:"fy26PostDegree",pw:"fy26PostTotal",
-  ab:"fy26AnnualBase",ac:"fy26AnnualCertPay",ae:"fy26AnnualEmt",an:"fy26AnnualNight",al:"fy26AnnualLongevity",at:"fy26AnnualTech",ad:"fy26AnnualDegreePay",ah:"fy26AnnualHolidayPay",aa:"fy26AnnualTotal"
+  sb:"fy26Base",sc:"fy26CertPay",se:"fy26Emt",sn:"fy26Night",st:"fy26Tech",sd:"fy26DegreePay",sx:"fy26EmsCoorPay",sw:"fy26WeeklyTotal",
+  pb:"fy26PostBase",pc:"fy26PostCert",pe:"fy26PostEmt",pn:"fy26PostNight",pt:"fy26PostTech",pd:"fy26PostDegree",px:"fy26PostEmsCoor",pw:"fy26PostTotal",
+  ab:"fy26AnnualBase",ac:"fy26AnnualCertPay",ae:"fy26AnnualEmt",an:"fy26AnnualNight",al:"fy26AnnualLongevity",at:"fy26AnnualTech",ad:"fy26AnnualDegreePay",ax:"fy26AnnualEmsCoorPay",ah:"fy26AnnualHolidayPay",aa:"fy26AnnualTotal"
  };
  if(fy===27)return {
-  sb:"base",sc:"certPay",se:"emt",sn:"night",st:"tech",sd:"degreePay",sw:"weeklyTotal",
-  pb:"fy27PostBase",pc:"fy27PostCert",pe:"fy27PostEmt",pn:"fy27PostNight",pt:"fy27PostTech",pd:"fy27PostDegree",pw:"fy27PostTotal",
-  ab:"annualBase",ac:"annualCertPay",ae:"annualEmt",an:"annualNight",at:"annualTech",ad:"annualDegreePay",ah:"annualHolidayPay",aa:"annualTotal"
+  sb:"base",sc:"certPay",se:"emt",sn:"night",st:"tech",sd:"degreePay",sx:"emsCoorPay",sw:"weeklyTotal",
+  pb:"fy27PostBase",pc:"fy27PostCert",pe:"fy27PostEmt",pn:"fy27PostNight",pt:"fy27PostTech",pd:"fy27PostDegree",px:"fy27PostEmsCoor",pw:"fy27PostTotal",
+  ab:"annualBase",ac:"annualCertPay",ae:"annualEmt",an:"annualNight",at:"annualTech",ad:"annualDegreePay",ax:"annualEmsCoorPay",ah:"annualHolidayPay",aa:"annualTotal"
  };
  return {
-  sb:`${p}Base`,sc:`${p}CertPay`,se:`${p}Emt`,sn:`${p}Night`,st:`${p}Tech`,sd:`${p}DegreePay`,sw:`${p}WeeklyTotal`,
-  pb:`${p}PostBase`,pc:`${p}PostCert`,pe:`${p}PostEmt`,pn:`${p}PostNight`,pt:`${p}PostTech`,pd:`${p}PostDegree`,pw:`${p}PostTotal`,
-  ab:`${p}AnnualBase`,ac:`${p}AnnualCertPay`,ae:`${p}AnnualEmt`,an:`${p}AnnualNight`,at:`${p}AnnualTech`,ad:`${p}AnnualDegreePay`,ah:`${p}AnnualHolidayPay`,aa:`${p}AnnualTotal`
+  sb:`${p}Base`,sc:`${p}CertPay`,se:`${p}Emt`,sn:`${p}Night`,st:`${p}Tech`,sd:`${p}DegreePay`,sx:`${p}EmsCoorPay`,sw:`${p}WeeklyTotal`,
+  pb:`${p}PostBase`,pc:`${p}PostCert`,pe:`${p}PostEmt`,pn:`${p}PostNight`,pt:`${p}PostTech`,pd:`${p}PostDegree`,px:`${p}PostEmsCoor`,pw:`${p}PostTotal`,
+  ab:`${p}AnnualBase`,ac:`${p}AnnualCertPay`,ae:`${p}AnnualEmt`,an:`${p}AnnualNight`,at:`${p}AnnualTech`,ad:`${p}AnnualDegreePay`,ax:`${p}AnnualEmsCoorPay`,ah:`${p}AnnualHolidayPay`,aa:`${p}AnnualTotal`
  };
 }
 const fyResults={};
@@ -565,13 +629,19 @@ function calcFY(fy,hire){
    if(isOfficer && !isFY26)e.textContent="No mid-year step increase";
    else e.textContent=actualStepDate?displayDate(actualStepDate):"No step increase this FY";
  });
- const startBase=chart?.[rank]?.[startStep], postBase=chart?.[rank]?.[postStep];
+ const firePreventionMultiplier=(firePrevention==="Yes"&&fy!==26&&rank==="Lieutenant")?1.15:
+   (firePrevention==="Yes"&&rank==="Deputy Chief")?1.10:1;
+ const fy26FirePreventionFixedBase=(firePrevention==="Yes"&&fy===26&&rank==="Lieutenant")?1813.16:
+   (firePrevention==="Yes"&&fy===26&&rank==="Deputy Chief")?2128.48:null;
+ const startBase=fy26FirePreventionFixedBase??(chart?.[rank]?.[startStep]*firePreventionMultiplier),
+       postBase=fy26FirePreventionFixedBase??(chart?.[rank]?.[postStep]*firePreventionMultiplier);
  if(!Number.isFinite(startBase)||!Number.isFinite(postBase)){clearFY(fy);return;}
  const lt1=chart.Lieutenant[1],lt6=chart.Lieutenant[6];
  // FY26 EMT Pay is always 8% of FY26 Lieutenant Step 4 for every employee.
  // FY27+ retains the existing 8% of Lieutenant Step 1 rule.
  const emtBase=(fy===26)?chart.Lieutenant[4]:lt1;
  const emt=emtBase*.08, certW=(cert*275)/52;
+  const emsCoor=(emsCoordinator==="Yes")?(fy===26?40:100):0;
  let edu=0;
  if(fy===26){
    // FY26 education is a fixed annual amount regardless of rank:
@@ -584,16 +654,18 @@ function calcFY(fy,hire){
  }
  const fy26NightRates={Firefighter:19.19,Lieutenant:20.42,"Deputy Chief":21.65};
  const weekly=(base,longevityAnnual=0)=>{
-   const night=(fy===26)?fy26NightRates[rank]:base*.02;
+   const night=(firePrevention==="Yes"&&(rank==="Lieutenant"||rank==="Deputy Chief"))
+    ? 0
+    : ((fy===26)?fy26NightRates[rank]:base*.02);
    const tech=(fy===26)?0:base*.01;
    const longevity=(fy===26)?longevityAnnual/52:0;
-   return {base,cert:certW,emt,night,tech,longevity,edu,total:base+certW+emt+night+tech+edu};
+   return {base,cert:certW,emt,night,tech,longevity,edu,emsCoor,total:base+certW+emt+night+tech+edu+emsCoor};
  };
  const A=weekly(startBase,longevityStartAnnual),B=weekly(postBase,longevityAnnAnnual);
  document.querySelectorAll(`.fy${fy}-start-step`).forEach(e=>e.textContent=startStep);
  document.querySelectorAll(`.fy${fy}-post-step`).forEach(e=>e.textContent=postStep);
- setText(I.sb,money(A.base));setText(I.sc,money(A.cert));setText(I.se,money(A.emt));setText(I.sn,money(A.night));setText(I.st,money(A.tech));setText(I.sd,money(A.edu));setText(I.sw,money(A.total));
- setText(I.pb,money(B.base));setText(I.pc,money(B.cert));setText(I.pe,money(B.emt));setText(I.pn,money(B.night));setText(I.pt,money(B.tech));setText(I.pd,money(B.edu));setText(I.pw,money(B.total));
+ setText(I.sb,money(A.base));setText(I.sc,money(A.cert));setText(I.se,money(A.emt));setText(I.sn,money(A.night));setText(I.st,money(A.tech));setText(I.sd,money(A.edu));setText(I.sx,money(A.emsCoor));setText(I.sw,money(A.total));
+ setText(I.pb,money(B.base));setText(I.pc,money(B.cert));setText(I.pe,money(B.emt));setText(I.pn,money(B.night));setText(I.pt,money(B.tech));setText(I.pd,money(B.edu));setText(I.px,money(B.emsCoor));setText(I.pw,money(B.total));
 
  // Weekly comparisons: FY28 vs FY27, FY29 vs FY28.
  // Compare the matching July 1 rate to the prior FY July 1 rate, and the matching
@@ -605,9 +677,9 @@ function calcFY(fy,hire){
  const prev=fyResults[fy-1];
  if(prev){
    setText(startPrevId,money(prev.startTotal));
-   setText(startIncId,pctChange(A.total,prev.startTotal));
+   setText(startIncId,dollarChange(A.total,prev.startTotal));
    setText(postPrevId,money(prev.postTotal));
-   setText(postIncId,pctChange(B.total,prev.postTotal));
+   setText(postIncId,dollarChange(B.total,prev.postTotal));
  }else{
    setText(startPrevId,"$ —");setText(startIncId,"—%");
    setText(postPrevId,"$ —");setText(postIncId,"—%");
@@ -634,15 +706,16 @@ function calcFY(fy,hire){
  const annualTech=weightedAnnual(A.tech,B.tech);
  const annualLongevity=weightedAnnual(A.longevity,B.longevity);
  const annualEdu=weightedAnnual(A.edu,B.edu);
+  const annualEmsCoor=weightedAnnual(A.emsCoor,B.emsCoor);
  // ProBoard is an established annual stipend and is not a weekly rate multiplied by the annualization factor.
  const annualCert=cert*275;
  // Holiday uses the FY's day-weighted average eligible weekly compensation; education remains excluded.
  const eligibleA=A.base+A.cert+A.emt+A.night+A.tech, eligibleB=B.base+B.cert+B.emt+B.night+B.tech;
  const avgEligible=(eligibleA*d1+eligibleB*d2)/(d1+d2);
- const holiday=avgEligible*3.25;
+ const holiday=(firePrevention==="Yes")?0:avgEligible*3.25;
  const clothing=(fy===26?680:(fy===29?1175:800));
- const annualTotal=annualBase+annualCert+annualEmt+annualNight+annualTech+annualLongevity+annualEdu+holiday+clothing;
- setText(I.ab,money(annualBase));setText(I.ac,money(annualCert));setText(I.ae,money(annualEmt));setText(I.an,money(annualNight));if(I.al)setText(I.al,money(annualLongevity));setText(I.at,money(annualTech));setText(I.ad,money(annualEdu));setText(I.ah,money(holiday));setText(I.aa,money(annualTotal));
+ const annualTotal=annualBase+annualCert+annualEmt+annualNight+annualTech+annualLongevity+annualEdu+annualEmsCoor+holiday+clothing;
+ setText(I.ab,money(annualBase));setText(I.ac,money(annualCert));setText(I.ae,money(annualEmt));setText(I.an,money(annualNight));if(I.al)setText(I.al,money(annualLongevity));setText(I.at,money(annualTech));setText(I.ad,money(annualEdu));setText(I.ax,money(annualEmsCoor));setText(I.ah,money(holiday));setText(I.aa,money(annualTotal));
 
  // Annual comparisons: FY28 vs FY27 and FY29 vs FY28.
  const annualPrevId=fy===27?"previousAnnualPay":`fy${fy}PreviousAnnualPay`;
@@ -672,8 +745,24 @@ function clearFY(fy){
  setText(annualPrevId,"$ —");setText(annualIncId,"—%");
  delete fyResults[fy];
 }
+function enforceFirePreventionEligibility(){
+ const yesBtn=document.querySelector('.special-role-buttons button[data-role="fire-prevention"][data-value="Yes"]');
+ const noBtn=document.querySelector('.special-role-buttons button[data-role="fire-prevention"][data-value="No"]');
+ if(!yesBtn||!noBtn)return;
+ const isFirefighter=rank==="Firefighter";
+ yesBtn.disabled=isFirefighter;
+ yesBtn.style.opacity=isFirefighter?".45":"";
+ yesBtn.style.cursor=isFirefighter?"not-allowed":"";
+ if(isFirefighter && firePrevention==="Yes"){
+   firePrevention="No";
+   document.querySelectorAll('.special-role-buttons button[data-role="fire-prevention"]').forEach(b=>b.classList.remove("selected"));
+   noBtn.classList.add("selected");
+ }
+}
 function update(){
+ enforceFirePreventionEligibility();
  Object.keys(fyResults).forEach(k=>delete fyResults[k]);
+ document.querySelectorAll(".ems-coor-line").forEach(el=>el.style.display=(emsCoordinator==="Yes"?"":"none"));
  const hire=selectedDate(),helper=document.getElementById("helper");
  helper.textContent="";
  if(hire && hire>new Date()){helper.textContent="Date cannot be in the future.";}
@@ -700,8 +789,25 @@ const monthSel=document.getElementById("hireMonth"),daySel=document.getElementBy
 monthNames.forEach((name,i)=>monthSel.add(new Option(name,i+1)));
 for(let d=1;d<=31;d++)daySel.add(new Option(d,d));
 const currentYear=new Date().getFullYear();
-for(let y=currentYear;y>=1950;y--)yearSel.add(new Option(y,y));
+for(let y=currentYear;y>=1988;y--)yearSel.add(new Option(y,y));
 [monthSel,daySel,yearSel].forEach(el=>el.addEventListener("change",update));
 update();
+
+document.querySelectorAll('.special-role-buttons button').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+   const role=btn.dataset.role;
+   document.querySelectorAll('.special-role-buttons button[data-role="'+role+'"]').forEach(b=>b.classList.remove('selected'));
+   btn.classList.add('selected');
+   if(role==="fire-prevention"){
+     firePrevention=btn.dataset.value;
+     update();
+   }
+   if(role==="ems-coordinator"){
+     emsCoordinator=btn.dataset.value;
+     update();
+   }
+ });
+});
+
 </script>
 </body></html>
